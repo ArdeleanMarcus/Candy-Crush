@@ -94,6 +94,88 @@ def formatiune_T():
                 zdrobire = False
     return scor, mutari
 
+
+def formatiune_T_cu_mutari():
+    # Directie formatiune: Jos
+    global scor
+    global mutari
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r + 2][c] == board[r][c] == board[r - 1][c] == board[r - 1][c - 1] == board[r - 1][c + 1] != 0:
+                board[r + 2][c], board[r+1][c] =  board[r + 1][c], board[r+2][c]
+                board[r + 1][c] = board[r][c] = board[r - 1][c] = board[r - 1][c - 1] = board[r - 1][c + 1] = 0
+                scor += 30
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("T jos in sus")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Sus
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r - 2][c] == board[r][c] == board[r - 1][c] == board[r - 1][c - 1] == board[r - 1][c + 1] != 0:
+                board[r - 2][c], board[r - 1][c] = board[r - 1][c], board[r - 2][c]
+                board[r + 1][c] = board[r][c] = board[r - 1][c] = board[r - 1][c - 1] = board[r - 1][c + 1] = 0
+                scor += 30
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("T sus in jos mijloc ")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Stanga
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r-1][c - 2] == board[r-1][c] == board[r-1][c + 1] == board[r][c] == board[r + 1][c] != 0:
+                board[r - 1][c-2], board[r - 1][c-1] = board[r - 1][c-1], board[r - 1][c-2]
+                board[r - 1][c - 1] = board[r - 1][c] = board[r - 1][c + 1] = board[r][c] = board[r + 1][c] = 0
+                scor += 30
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("T stanga la dreapta")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Dreapta
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r-1][c - 1] == board[r-1][c] == board[r-1][c + 2] == board[r][c] == board[r + 1][c] != 0:
+                board[r - 1][c+2], board[r - 1][c+1] = board[r - 1][c+1], board[r - 1][c+2]
+                board[r - 1][c - 1] = board[r - 1][c] = board[r - 1][c + 1] = board[r][c] = board[r + 1][c] = 0
+                scor += 30
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("T dreapta")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+    return scor, mutari
+
+
 def formatiune_L():
     global scor
     global mutari
@@ -170,6 +252,88 @@ def formatiune_L():
                 zdrobire = False
     return scor, mutari
 
+
+def formatiune_L_cu_mutari():
+    global scor
+    global mutari
+    # Directie formatiune: Colt stanga jos
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r - 2][c] == board[r][c] == board[r + 1][c] == board[r + 1][c+1] == board[r + 1][c + 2] != 0:
+                board[r - 2][c], board[r - 1][c] = board[r - 1][c], board[r - 2][c]
+                board[r - 1][c] = board[r][c] = board[r + 1][c] = board[r + 1][c + 1] = board[r + 1][c + 2] = 0
+                scor += 20
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("L stanga sus in jos")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Colt dreapta jos
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r - 1][c] == board[r][c] == board[r + 2][c] == board[r + 1][c+1] == board[r + 1][c + 2] != 0:
+                board[r + 2][c], board[r + 1][c] = board[r + 1][c], board[r + 2][c]
+                board[r - 1][c] = board[r][c] = board[r + 1][c] = board[r + 1][c + 1] = board[r + 1][c + 2] = 0
+                scor += 20
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("L jos in sus colt")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Colt stanga sus
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r - 1][c] == board[r][c] == board[r + 1][c-1] == board[r + 1][c+1] == board[r + 1][c + 2] != 0:
+                board[r + 1][c-1], board[r + 1][c] = board[r + 1][c], board[r + 1][c-1]
+                board[r - 1][c] = board[r][c] = board[r + 1][c] = board[r + 1][c + 1] = board[r + 1][c + 2] = 0
+                scor += 20
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("L stanga la dreapta colt")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # Directie formatiune: Colt dreapta sus
+    for r in range(len(board) - 4):
+        for c in range(1, len(board) - 4):
+            while board[r - 1][c] == board[r][c] == board[r + 1][c] == board[r + 1][c+1] == board[r + 1][c + 3] != 0:
+                board[r + 1][c + 3], board[r + 1][c + 2] = board[r + 1][c + 2], board[r + 1][c + 3]
+                board[r - 1][c] = board[r][c] = board[r + 1][c] = board[r + 1][c + 1] = board[r + 1][c + 2] = 0
+                scor += 20
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("L dreapta la stanga")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+    return scor, mutari
+
+
 def linie_de_5():
     global scor
     global mutari
@@ -212,6 +376,89 @@ def linie_de_5():
                 print("mutari = ", mutari)
                 zdrobire = False
     return scor, mutari
+
+
+def linie_de_5_cu_mutari():
+    global scor
+    global mutari
+    # LINIE DE 4
+    # sortare linii
+    for r in range(len(board)):
+        for c in range(len(board) - 4):
+            while abs(board[r][c]) == abs(board[r][c + 1]) == abs(board[r][c + 2]) == abs(board[r][c+3]) == abs(board[r][c - 2]) != 0:
+                board[r][c - 2], board[r][c - 1] = board[r][c - 1], board[r][c - 2]
+                board[r][c - 1] = board[r][c] = board[r][c + 1] = board[r][c + 2] = board[r][c + 3] = 0
+                scor += 50
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("linie de 5 de la stanga la dreapta")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # sortare linii
+    for r in range(len(board)):
+        for c in range(len(board) - 4):
+            while abs(board[r][c - 3]) == abs(board[r][c - 2]) == abs(board[r][c - 1]) == abs(board[r][c]) == abs(board[r][c + 2]) != 0:
+                board[r][c + 1], board[r][c + 2] = board[r][c + 2], board[r][c + 1]
+                board[r][c - 3] = board[r][c - 2] = board[r][c - 1] = board[r][c] = board[r][c + 1] = 0
+                scor += 50
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("linie de 5 de la dreapta la stanga")
+                print("\n")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                zdrobire = False
+
+    # sortare coloane
+    for r in range(len(board) - 4):
+        for c in range(len(board)):
+            while abs(board[r - 3][c]) == abs(board[r - 2][c]) == abs(board[r - 1][c]) == abs(board[r][c]) == abs(board[r + 2][c]) != 0:
+                board[r + 2][c], board[r + 1][c] = board[r + 1][c], board[r + 2][c]
+                board[r - 3][c] = board[r - 2][c] = board[r - 1][c] = board[r][c] = board[r + 1][c] = 0
+                scor += 50
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("coloana de 5 de jos in sus")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                print("\n")
+                zdrobire = False
+
+    # sortare coloane
+    for r in range(len(board) - 4):
+        for c in range(len(board)):
+            while abs(board[r + 3][c]) == abs(board[r + 2][c]) == abs(board[r + 1][c]) == abs(board[r][c]) == abs(board[r - 2][c]) != 0:
+                board[r - 1][c], board[r - 2][c] = board[r - 2][c], board[r - 1][c]
+                board[r - 1][c] = board[r][c] = board[r + 1][c] = board[r + 2][c] = board[r + 3][c]= 0
+                scor += 50
+                mutari += 1
+                print(board, "\n")
+                drop()
+                print(board, "\n")
+                inlocuire()
+                print(board, "\n")
+                print("coloana de 5 de sus in jos")
+                print("\n")
+                print("scor = ", scor)
+                print("mutari = ", mutari)
+                zdrobire = False
+    return scor, mutari
+
 
 def linie_de_4():
     global scor
@@ -376,6 +623,7 @@ def linie_de_3():
                 zdrobire = False
     return scor, mutari
 
+
 def linie_de_3_cu_mutare():
     global scor
     global mutari
@@ -454,7 +702,7 @@ def linie_de_3_cu_mutare():
                 print("mutari = ", mutari)
                 zdrobire = False
     return scor, mutari
-print(mutari, "sadasagasgegasgeg")
+
 
 #dupa ce o formatiune de bomboane a fost schimbata cu 0, acestea sunt mutate in partea de sus a matricei
 def drop():
@@ -483,17 +731,107 @@ if __name__ == '__main__':
     print("\n")
 
 
-    while(mutari <= 50):
-        linie_de_5()
-        formatiune_T()
-        formatiune_L()
-        linie_de_4()
-        linie_de_4_cu_mutare()
-        linie_de_3()
-        linie_de_3_cu_mutare()
-        print('nr de jocuri = ', game)
-        game = game + 1
-
+    while(game<1):
+        while(mutari <= 10000):
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            linie_de_4()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            linie_de_4_cu_mutare()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            linie_de_3()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            linie_de_3_cu_mutare()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_T_cu_mutari()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+            formatiune_L()
+            linie_de_5()
+            linie_de_5_cu_mutari()
+    print('nr de jocuri = ', game)
+    game = game + 1
 
 
 
